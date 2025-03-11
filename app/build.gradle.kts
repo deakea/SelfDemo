@@ -2,7 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.mavenPublish)
+//    alias(libs.plugins.mavenPublish)
+    id("maven-publish")
 
 }
 afterEvaluate {
@@ -15,7 +16,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = "com.github.deakea"
                 artifactId = "SelfDemo"
-                version = "1.0.1"
+                version = "1.0.2"
 
             }
 
