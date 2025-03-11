@@ -2,8 +2,26 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-}
+    alias(libs.plugins.mavenPublish)
 
+}
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            create<MavenPublication>("release") {
+                // Applies the component for the release build variant.\
+                // from(components["release"])
+                // You can then customize attributes of the publication as shown below.
+                groupId = "com.deak"
+                artifactId = "dkmyutils"
+                version = "1.0.0"
+
+            }
+
+        }
+    }
+}
 android {
     namespace = "com.wudi.trust.decision.myas"
     compileSdk = 35
