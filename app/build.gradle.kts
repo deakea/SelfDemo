@@ -2,8 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-//    alias(libs.plugins.mavenPublish)
-    id("maven-publish")
+    alias(libs.plugins.mavenPublish)
+//    id("maven-publish")
 
 }
 afterEvaluate {
@@ -12,11 +12,11 @@ afterEvaluate {
             // Creates a Maven publication called "release".
             create<MavenPublication>("release") {
                 // Applies the component for the release build variant.\
-                // from(components["release"])
+                 from(components["release"])
                 // You can then customize attributes of the publication as shown below.
                 groupId = "com.github.deakea"
                 artifactId = "SelfDemo"
-                version = "1.0.2"
+                version = "1.0.3"
 
             }
 
@@ -36,7 +36,12 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
