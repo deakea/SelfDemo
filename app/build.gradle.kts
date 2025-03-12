@@ -6,23 +6,7 @@ plugins {
 //    id("maven-publish")
 
 }
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            create<MavenPublication>("release") {
-                // Applies the component for the release build variant.\
-                 from(components["release"])
-                // You can then customize attributes of the publication as shown below.
-                groupId = "com.github.deakea"
-                artifactId = "SelfDemo"
-                version = "1.0.3"
 
-            }
-
-        }
-    }
-}
 android {
     namespace = "com.wudi.trust.decision.myas"
     compileSdk = 35
@@ -60,6 +44,23 @@ android {
     }
     buildFeatures {
         compose = true
+    }
+}
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            create<MavenPublication>("release") {
+                // Applies the component for the release build variant.\
+//                from(components["release"])
+                // You can then customize attributes of the publication as shown below.
+                groupId = "com.github.deakea"
+                artifactId = "SelfDemo"
+                version = "1.0.4"
+
+            }
+
+        }
     }
 }
 
