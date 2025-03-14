@@ -2,8 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.mavenPublish)
-//    id("maven-publish")
+//    alias(libs.plugins.mavenPublish)
+    id("maven-publish")
 
 }
 
@@ -54,7 +54,7 @@ afterEvaluate {
     publishing {
         publications {
             // Creates a Maven publication called "release".
-            create<MavenPublication>("release") {
+            register("release", MavenPublication::class) {
                 // Applies the component for the release build variant.\
                 from(components["release"])
                 // You can then customize attributes of the publication as shown below.
@@ -67,6 +67,7 @@ afterEvaluate {
         }
     }
 }
+
 
 dependencies {
 
@@ -86,3 +87,15 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            register("release", MavenPublication::class) {
+//                from(components["release"])
+//                groupId = "com.github.xs93"
+//                artifactId = "AVLoadingIndicatorView"
+//                version = "1.0.1"
+//            }
+//        }
+//    }
+//}
