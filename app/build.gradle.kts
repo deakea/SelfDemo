@@ -25,6 +25,10 @@ android {
             withSourcesJar()
             withJavadocJar()
         }
+        singleVariant("debug") {
+            withSourcesJar()
+            withJavadocJar()
+        }
     }
     buildTypes {
         release {
@@ -52,11 +56,11 @@ afterEvaluate {
             // Creates a Maven publication called "release".
             create<MavenPublication>("release") {
                 // Applies the component for the release build variant.\
-//                from(components["release"])
+                from(components["release"])
                 // You can then customize attributes of the publication as shown below.
                 groupId = "com.github.deakea"
                 artifactId = "SelfDemo"
-                version = "1.0.4"
+                version = "1.0.5"
 
             }
 
